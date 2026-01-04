@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap');
+
+@layer base {
+  :root {
+    /* Facebook Dark Mode Palette */
+    --background: 220 15% 10%; /* Dark Background (~#18191a) */
+    --foreground: 0 0% 98%;
+
+    --card: 220 10% 15%; /* Elevated Card/Layer 2 (~#242526) */
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 10% 15%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 214 89% 52%; /* Facebook Blue (~#0866FF) */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 220 10% 20%; /* Muted element background (~#3a3b3c) */
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 10% 30%;
+    --muted-foreground: 220 10% 65%;
+
+    --accent: 214 89% 52%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 142 76% 42%;
+    --success-foreground: 0 0% 98%;
+
+    --paypal: 210 100% 45%;
+    --visa: 220 80% 50%;
+
+    --border: 220 10% 25%;
+    --input: 220 10% 20%;
+    --ring: 214 89% 52%;
+
+    --radius: 0.5rem; /* Smaller radii for modern/FB feel */
+
+    /* Gradients adapted to FB Blue */
+    --gradient-gold: linear-gradient(135deg, hsl(214 89% 55%), hsl(214 89% 45%));
+    --gradient-premium: linear-gradient(135deg, hsl(214 89% 60%), hsl(214 89% 50%));
+    --gradient-dark: linear-gradient(180deg, hsl(220 15% 12%), hsl(220 15% 8%));
+    --gradient-card: linear-gradient(145deg, hsl(220 10% 18%), hsl(220 10% 12%));
+    --gradient-glow: radial-gradient(ellipse at 50% 0%, hsl(214 89% 52% / 0.15), transparent 60%);
+    --gradient-paypal: linear-gradient(135deg, hsl(210 100% 50%), hsl(200 100% 40%));
+    --gradient-visa: linear-gradient(135deg, hsl(220 80% 55%), hsl(240 70% 45%));
+
+    /* Shadows adapted for FB style */
+    --shadow-gold: 0 20px 60px -15px hsl(214 89% 52% / 0.4);
+    --shadow-card: 0 10px 30px -5px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 80px hsl(214 89% 52% / 0.25);
+    --shadow-inner: inset 0 1px 0 hsl(0 0% 100% / 0.05);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: 'Tajawal', sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background: var(--gradient-dark);
+  }
+}
+
+@layer utilities {
+  .glass {
+    /* Adapted to look like a standard elevated dark FB card */
+    @apply bg-card border border-border/70;
+    box-shadow: 0 1px 2px hsl(0 0% 0% / 0.15), 0 2px 4px hsl(0 0% 0% / 0.1);
+  }
+
+  .glass-premium {
+    @apply border border-border/80;
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card), var(--shadow-inner);
+  }
+
+  .gradient-gold {
+    background: var(--gradient-gold);
+  }
+
+  .gradient-premium {
+    background: var(--gradient-premium);
+  }
+
+  .gradient-paypal {
+    background: var(--gradient-paypal);
+  }
+
+  .gradient-visa {
+    background: var(--gradient-visa);
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .glow-gold {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.1), transparent);
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    100% { left: 100%; }
+  }
+}
+
+@layer components {
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+}
+
+@keyframes glow {
+  /* Updated glow color to FB Blue */
+  from { box-shadow: 0 0 20px hsl(214 89% 52% / 0.3); }
+  to { box-shadow: 0 0 40px hsl(214 89% 52% / 0.5); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Custom scrollbar, updated to FB Dark Theme colors */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(220 10% 15%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(214 89% 52% / 0.5);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(214 89% 52% / 0.7);
+}
