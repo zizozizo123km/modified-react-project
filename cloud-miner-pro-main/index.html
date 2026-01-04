@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تعدين برو - منصة التعدين السحابي</title>
+    <meta name="description" content="منصة تعدين العملات الرقمية السحابية - أرباح يومية مضمونة" />
+    <meta name="author" content="Mining Pro" />
+
+    <meta property="og:title" content="تعدين برو - منصة التعدين السحابي" />
+    <meta property="og:description" content="منصة تعدين العملات الرقمية السحابية - أرباح يومية مضمونة" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <!-- Important for Facebook integration, ensure this App ID is set in the FB App Dashboard -->
+    <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@MiningPro" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  </head>
+
+  <body>
+    <!-- Facebook SDK initialization -->
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        // Initialize the Facebook SDK here
+        FB.init({
+          appId      : 'YOUR_FACEBOOK_APP_ID', // *IMPORTANT*: Replace with your actual Facebook App ID
+          cookie     : true,  // enable cookies to allow the server to access the session
+          xfbml      : true,  // parse social plugins on this page
+          version    : 'v19.0' // Use a recent API version
+        });
+
+        // Optional: Automatically resize Canvas App based on content height
+        // if (FB.Canvas) {
+        //   FB.Canvas.setSize();
+        // }
+      };
+
+      // Load the SDK asynchronously
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/ar_AR/sdk.js"; // Using Arabic locale
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
